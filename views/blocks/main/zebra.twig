@@ -1,0 +1,36 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.zebra is iterable %}
+        <div class="zebra">
+        {% for key,val in fields.zebra %}
+            <div class="row">
+                <div class="info">
+                    {% if val.title %}
+                    <p class="title">{{ val.title }}</p>
+                    {% endif %}
+                    {% if val.description %}
+                    <div class="description typo">
+                        {{ val.description }}
+                    </div>
+                    {% endif %}
+                    {% if val.button.url and val.button.title %}
+                    <p class="overallButton shadow smaller">
+                        <a href="{{ val.button.url }}" target="{{ val.button.target }}">
+                            {{ val.button.title }}
+                        </a>
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="image"{% if val.image.url %} style="background-image: url({{ val.image.url }});"{% endif %}></div>
+            </div>
+        {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

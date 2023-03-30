@@ -1,0 +1,40 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        <div class="columns">
+            <div class="left">
+                {% if fields.gallery.0.url %}
+                <img src="{{ fields.gallery.0.url }}" alt="{{ fields.gallery.0.alt }}">
+                {% endif %}
+            </div>
+            <div class="right">
+                {% if fields.title %}
+                <p class="title">{{ fields.title }}</p>
+                {% endif %}
+                {% if fields.description %}
+                <div class="typo desc">
+                    {{ fields.description }}
+                </div>
+                {% endif %}
+                {% if fields.button.url and fields.button.title %}
+                <p class="overallButton shadow smaller">
+                    <a href="{{ fields.button.url }}" target="{{ fields.button.target }}">
+                        {{ fields.button.title }}
+                    </a>
+                </p>
+                {% endif %}
+                {% if fields.gallery.1.url and fields.gallery.2.url %}
+                <div class="otherImages">
+                    <img src="{{ fields.gallery.1.url }}" alt="{{ fields.gallery.1.alt }}">
+                    <img src="{{ fields.gallery.2.url }}" alt="{{ fields.gallery.2.alt }}">
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

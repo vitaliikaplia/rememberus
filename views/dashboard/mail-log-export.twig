@@ -1,0 +1,20 @@
+<div class="wrap export-mail-log">
+    <h2>Mail log export</h2>
+    <form method="post" action="?post_type=mail-log&page=mail_logs_export&export_process=ok">
+        <label for="export_date_from">
+            <p>From date:</p>
+            <input type="date" id="export_date_from" name="export_date_from"
+                   value="{{ fromDate }}"
+                   min="{{ fromDate }}" max="{{ maxDate }}" class="normal regular-text">
+        </label>
+        <label for="export_date_to">
+            <p>To date</p>
+            <input type="date" id="export_date_to" name="export_date_to"
+                   value="{{ maxDate }}"
+                   min="{{ fromDate }}" max="{{ maxDate }}" class="normal regular-text">
+        </label>
+        <p class="submit">
+            <input type="submit" value="Export" class="button-primary" />
+        </p>
+    </form>
+</div>

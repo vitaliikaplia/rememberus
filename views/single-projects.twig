@@ -1,0 +1,74 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="projectWrapper">
+    <div class="project">
+        <div class="banner{% if custom_fields.top_banner.gradient %} gradient{% endif %}" style="background-image: url({{ custom_fields.top_banner.background_image.url }});">
+            {% if custom_fields.top_banner.unique_title %}
+            {% set title = custom_fields.top_banner.unique_title %}
+            {% else %}
+            {% set title = post.title %}
+            {% endif %}
+            {% if title %}
+            <p class="title">{{ title }}</p>
+            {% endif %}
+            {% if custom_fields.top_banner.start_date or custom_fields.top_banner.end_date %}
+            <div class="dates">
+                {% if custom_fields.top_banner.start_date %}
+                <p class="start">started: {{ custom_fields.top_banner.start_date }}</p>
+                {% endif %}
+                {% if custom_fields.top_banner.end_date %}
+                <p class="end">finished: {{ custom_fields.top_banner.end_date }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% if custom_fields.use_overall_prefix and general_fields.projects.overall_project_prefix %}
+        <div class="text typo">
+            {{ general_fields.projects.overall_project_prefix }}
+        </div>
+        {% else %}
+        {% if custom_fields.text %}
+        <div class="text typo">
+            {{ custom_fields.text }}
+        </div>
+        {% endif %}
+        {% endif %}
+        {% if custom_fields.numbers is iterable %}
+        <div class="numbers">
+            {% for key,val in custom_fields.numbers %}
+            {% if val.number or val.description %}
+            <div class="item">
+                {% if val.number %}
+                <p class="number">{{ val.number }}</p>
+                {% endif %}
+                {% if val.description %}
+                <p class="description">{{ val.description }}</p>
+                {% endif %}
+                <div class="bg"></div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if custom_fields.gallery is iterable %}
+        <div class="gallery">
+            {% for key,val in custom_fields.gallery %}
+            {% if val.url %}
+            <a href="{{ val.url }}" class="fancybox" data-fancybox="gallery">
+                <img src="{{ val.url }}" alt="{{ val.alt }}">
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if custom_fields.content %}
+        <div class="content typo">
+            {{ custom_fields.content }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

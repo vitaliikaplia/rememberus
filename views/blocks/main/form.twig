@@ -1,0 +1,79 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <p class="title">{{ fields.title }}</p>
+        {% endif %}
+        <div class="columns">
+            <div class="left">
+                {% if fields.description %}
+                <div class="typo">
+                    {{ fields.description }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="right">
+                <form>
+                    {% if fields.form_title %}
+                    <p class="title">{{ fields.form_title }}</p>
+                    {% endif %}
+                    <input type="hidden" name="action" value="custom_form_submit">
+                    <input type="hidden" name="form_name" value="{{ post.title }}">
+                    {% set secret = [] %}
+                    {% set secret = secret | merge([{ email_recipients: fields.email_recipients }]) %}
+                    {% set secret = secret | merge([{ thanks_page: fields.thanks_page }]) %}
+                    {% if secret is iterable %}
+                    <input type="hidden" name="secret" value="{{ fn('custom_form_secret', secret) }}">
+                    {% endif %}
+                    {% set utm = fn('get_utm_for_form') %}
+                    {% if utm is iterable %}
+                    {% for key,val in utm %}
+                    <input type="hidden" name="{{ key }}" value="{{ val }}">
+                    {% endfor %}
+                    {% endif %}
+                    {% set HTTP_REFERER = fn('get_HTTP_REFERER_for_form') %}
+                    {% if HTTP_REFERER %}
+                    <input type="hidden" name="HTTP_REFERER" value="{{ HTTP_REFERER }}">
+                    {% endif %}
+                    {% set gclid = fn('get_gclid_for_form') %}
+                    {% if gclid is iterable %}
+                    {% for key,val in gclid %}
+                    <input type="hidden" name="{{ key }}" value="{{ val }}">
+                    {% endfor %}
+                    {% endif %}
+                    <div class="fields">
+                        <label>
+                            <p>Name</p>
+                            <input type="text" name="Name" placeholder="Enter Name" value="" class="required">
+                        </label>
+                        <label>
+                            <p>Phone Number</p>
+                            <input type="text" name="Phone Number" placeholder="Enter Number" value="" class="required">
+                        </label>
+                        <label>
+                            <p>Email Address</p>
+                            <input type="text" name="Email Address" placeholder="Enter email" value="" class="required email">
+                        </label>
+                        <label>
+                            <p>Subject</p>
+                            <input type="text" name="Subject" placeholder="Enter your subject" value="" class="required">
+                        </label>
+                        <label>
+                            <p>Your message</p>
+                            <textarea name="Your message" placeholder="Enter message"></textarea>
+                        </label>
+                    </div>
+                    <div class="submitWrapper">
+                        <input type="submit" style="display: none;">
+                        <button class="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

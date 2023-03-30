@@ -1,0 +1,64 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <p class="title">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.description %}
+        <div class="description typo">
+            {{ fields.description }}
+        </div>
+        {% endif %}
+        {% if fields.team is iterable %}
+        <div class="team">
+            {% for key,val in fields.team %}
+            <div class="person">
+                <p class="photo">
+                    {% if val.photo.url %}
+                    <img src="{{ val.photo.url }}" alt="{{ val.title }}">
+                    {% endif %}
+                </p>
+                {% if val.title %}
+                <p class="title">{{ val.title }}</p>
+                {% endif %}
+                {% if val.position %}
+                <p class="position">{{ val.position }}</p>
+                {% endif %}
+                {% if val.bio %}
+                <div class="bio">
+                    <div class="typo">{{ val.bio }}</div>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% if fields.more is iterable %}
+        <div class="more">
+            {% for key,val in fields.more %}
+            <div class="columns">
+                {% if val.columns is iterable %}
+                    {% for key_c,val_c in val.columns %}
+                    <div class="column">
+                        {% if val_c.title %}
+                        <p class="title">{{ val_c.title }}</p>
+                        {% endif %}
+                        {% if val_c.text %}
+                        <div class="text typo c-{{ val_c.break_text_to_columns }}">
+                            {{ val_c.text }}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

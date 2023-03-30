@@ -1,0 +1,150 @@
+/* donate
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-donate{
+  padding: 80px 20px 120px;
+
+  @media (max-width: 1024px){
+    padding: 60px 20px 80px;
+  }
+
+  .customBlock{
+    margin: 0 auto;
+    max-width: 780px;
+
+    .title{
+      font-weight: 700;
+      font-size: 60px;
+      line-height: .9;
+      text-align: center;
+      color: #18171C;
+      margin-bottom: 48px;
+
+      @media (max-width: 1024px){
+        font-size: 40px;
+        line-height: 1.2;
+        margin-bottom: 32px;
+      }
+    }
+
+    .buttons{
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      width: calc(100% + 10px);
+      margin-left: -5px;
+      margin-right: -5px;
+      margin-bottom: 24px;
+
+      &:after{
+        content: '';
+        display: block;
+        width: 100%;
+        max-width: 1180px;
+        height: 1px;
+        background-color: #E5E5E5;
+        margin: 20px 5px 12px;
+      }
+
+      p{
+        position: relative;
+        width: calc(50% - 10px);
+        margin: 0 5px 10px;
+        height: 86px;
+        padding: 10px;
+        border-radius: 5px;
+        @include transition(all,.35s);
+        font-size: 25px;
+        line-height: 1;
+
+        @media (max-width: 1024px){
+          height: 68px;
+          font-size: 20px;
+        }
+
+        @media (max-width: 580px){
+          width: calc(100% - 10px);
+        }
+
+        a{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          text-decoration: none;
+
+          img{
+            width: auto;
+            height: 34px;
+            margin-right: 8px;
+          }
+        }
+
+        &.t-pp{
+          background: #4352A2;
+
+          &:hover{
+            background: lighten(#4352A2, 8);
+          }
+        }
+
+        &.t-ppgf{
+          background: #0A99FD;
+
+          &:hover{
+            background: lighten(#0A99FD, 8);
+          }
+        }
+
+        &.t-fb{
+          background: #0084FF;
+
+          &:hover{
+            background: lighten(#0084FF, 8);
+          }
+        }
+
+        &.t-amzn{
+          background: #EF4056;
+
+          &:hover{
+            background: lighten(#EF4056, 8);
+          }
+        }
+      }
+    }
+
+    .buttonsText{
+      max-width: 670px;
+      margin: 0 auto 48px;
+      color: #99979E;
+      padding-left: 112px;
+      position: relative;
+      font-size: 12px;
+      line-height: 1.5;
+
+      &:before{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        margin-top: -17px;
+        width: 96px;
+        height: 34px;
+        background-position: center;
+        background-repeat: no-repeat;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-image: url(../../../img/i_icon.png);
+      }
+    }
+  }
+}

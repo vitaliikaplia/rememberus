@@ -1,0 +1,42 @@
+<div class="footerBlockWrapper{% if custom_fields.show_footer_spacer_line %} spacer{% endif %}">
+    {% if general_fields.footer.content_block and not custom_fields.hide_footer_block %}
+    {{ fn('get_block_content', general_fields.footer.content_block) }}
+    {% endif %}
+    <div class="firstLineWrapper">
+        <div class="firstLine">
+            <p class="logo">
+                <a href="{{ site.url }}">
+                    <img src="{{ site.theme.uri }}/assets/img/footer-logo.png" alt="{{ site.name }}">
+                </a>
+            </p>
+            {% if general_fields.footer.socials is iterable %}
+            <ul class="socials">
+                {% for key,val in general_fields.footer.socials %}
+                    {% if val.type == "em" %}
+                        {% set link = 'mailto:'~val.email %}
+                    {% else %}
+                        {% set link = val.url %}
+                    {% endif %}
+                    <li>
+                        <a href="{{ link }}" target="_blank">
+                            <img src="{{ site.theme.uri }}/assets/img/f-soc-{{ val.type }}.png">
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+{#            {% if general_fields.footer.prefix_text %}#}
+{#            <div class="prefix typo">#}
+{#                {{ general_fields.footer.prefix_text }}#}
+{#            </div>#}
+{#            {% endif %}#}
+        </div>
+    </div>
+    {% if general_fields.footer.suffix_text %}
+    <div class="secondLineWrapper">
+        <div class="secondLine typo">
+            {{ general_fields.footer.suffix_text }}
+        </div>
+    </div>
+    {% endif %}
+</div>

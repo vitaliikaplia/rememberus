@@ -1,0 +1,28 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        <div class="banner"{% if fields.top_background.url %} style="background-image: url({{ fields.top_background.url }});"{% endif %}>
+            {% if fields.title %}
+            <p class="title">{{ fields.title }}</p>
+            {% endif %}
+            <span class="gradient"></span>
+        </div>
+        {% if fields.text %}
+        <div class="textWrapper{% if fields.side_image.url %} with-image {{ fields.side_image_direction }}{% endif %}">
+            {% if fields.side_image.url %}
+            <div class="image">
+                <img src="{{ fields.side_image.url }}" alt="{{ fields.side_image.alt }}">
+            </div>
+            {% endif %}
+            <div class="text typo">
+                {{ fields.text }}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

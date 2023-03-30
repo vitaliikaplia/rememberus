@@ -1,0 +1,25 @@
+{% extends "base-clean.twig" %}
+
+{% block content %}
+
+<div class="box404">
+
+    {% if general_fields.page_404.title %}
+    <p class="title">{{ general_fields.page_404.title }}</p>
+    {% endif %}
+
+    {% if general_fields.page_404.message %}
+    <div class="typo">{{ general_fields.page_404.message }}</div>
+    {% endif %}
+
+    {% if general_fields.page_404.button.url %}
+    <p class="overallButton smaller shadow">
+        <a href="{{ general_fields.page_404.button.url }}" target="{{ general_fields.page_404.button.target }}">
+            <span>{{ general_fields.page_404.button.title }}</span>
+        </a>
+    </p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

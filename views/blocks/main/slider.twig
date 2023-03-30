@@ -1,0 +1,36 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.slider is iterable %}
+        <div class="slider">
+            {% for key,val in fields.slider %}
+            <div class="slide"{% if val.image.url %} style="background-image: url({{ val.image.url }});"{% endif %}>
+                <div class="bottomWrapper">
+                    <div class="bottom">
+                        <div class="inner">
+                            {% if fields.button.url and fields.button.title %}
+                            <p class="overallButton shadow">
+                                <a href="{{ fields.button.url }}" target="{{ fields.button.target }}">
+                                    {{ fields.button.title }}
+                                </a>
+                            </p>
+                            {% endif %}
+                            {% if fields.text %}
+                            <div class="type suffix">
+                                {{ fields.text }}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

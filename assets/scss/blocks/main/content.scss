@@ -1,0 +1,126 @@
+/* content
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-content{
+  .customBlock{
+    margin-bottom: 40px;
+
+    .banner{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      height: 266px;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      margin-bottom: 48px;
+
+      @media (max-width: 1024px){
+        margin-bottom: 32px;
+        height: 220px;
+      }
+
+      .title{
+        font-weight: 700;
+        font-size: 60px;
+        position: relative;
+        z-index: 5;
+        @include transform(translateZ(5px));
+
+        @media (max-width: 1024px){
+          font-size: 40px;
+        }
+      }
+
+      .gradient{
+        position: absolute;
+        z-index: 1;
+        @include transform(translateZ(1px));
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(111.77deg, rgba(0, 67, 139, 0.5) 38.11%, rgba(152, 116, 0, 0.5) 64.59%);
+      }
+    }
+
+    .textWrapper{
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 20px;
+
+      .text{
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      &.with-image{
+        max-width: 1400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.left{
+          flex-direction: row;
+
+          @media (max-width: 1024px){
+            flex-direction: column;
+          }
+
+          .text{
+            padding-left: 40px;
+
+            @media (max-width: 1024px){
+              padding-left: 0;
+            }
+          }
+        }
+        &.right{
+          flex-direction: row-reverse;
+
+          @media (max-width: 1024px){
+            flex-direction: column;
+          }
+
+          .text{
+            padding-right: 40px;
+
+            @media (max-width: 1024px){
+              padding-right: 0;
+            }
+          }
+        }
+
+        .image{
+          width: 45%;
+          font-size: 0;
+
+          @media (max-width: 1024px){
+            width: 100%;
+            margin-bottom: 28px;
+          }
+
+          img{
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        .text{
+          width: 55%;
+
+          @media (max-width: 1024px){
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

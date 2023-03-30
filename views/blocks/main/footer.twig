@@ -1,0 +1,45 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        <div class="columns">
+            <div class="left">
+                {% if fields.title %}
+                <p class="title">{{ fields.title }}</p>
+                {% endif %}
+                {% if fields.button.url and fields.button.title %}
+                <p class="overallButton shadow">
+                    <a href="{{ fields.button.url }}" target="{{ fields.button.target }}">
+                        {{ fields.button.title }}
+                    </a>
+                </p>
+                {% endif %}
+                {% if fields.text_under_button %}
+                <div class="typo under">
+                    {{ fields.text_under_button }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="right">
+                {% if fields.description %}
+                <div class="typo description">
+                    {{ fields.description }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% if fields.random_images is iterable %}
+    <div class="randomImages">
+        {% for key,val in fields.random_images %}
+        {% if val.url %}
+        <img src="{{ val.url }}" alt="{{ val.alt }}">
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

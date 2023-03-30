@@ -1,0 +1,140 @@
+/* faq
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-faq{
+  .customBlock{
+    margin-bottom: 40px;
+
+    .banner{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      height: 266px;
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-background-size: cover;
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      margin-bottom: 48px;
+
+      @media (max-width: 1024px){
+        margin-bottom: 32px;
+        height: 220px;
+      }
+
+      .title{
+        font-weight: 700;
+        font-size: 60px;
+        position: relative;
+        z-index: 5;
+        @include transform(translateZ(5px));
+
+        @media (max-width: 1024px){
+          font-size: 40px;
+        }
+      }
+
+      .gradient{
+        position: absolute;
+        z-index: 1;
+        @include transform(translateZ(1px));
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(111.77deg, rgba(0, 67, 139, 0.5) 38.11%, rgba(152, 116, 0, 0.5) 64.59%);
+      }
+    }
+
+    .faq{
+      margin: 0 auto;
+      max-width: 1220px;
+      padding: 0 20px;
+
+      .line{
+        border-bottom: solid 1px #CCCCCC;
+
+        .wp-admin &,
+        .wp-embed-responsive &{
+          &:first-child{
+            .question{
+              &:before{
+                @include transform(rotate(180deg));
+              }
+            }
+            .answer{
+              display: block;
+            }
+          }
+        }
+
+        .question{
+          padding: 22px 32px 22px 0;
+          color: #18171C;
+          cursor: pointer;
+          font-weight: 700;
+          font-size: 25px;
+          line-height: 1;
+          position: relative;
+
+          @media (max-width: 1024px){
+            padding: 18px 32px 18px 0;
+            font-size: 20px;
+          }
+
+          &:before{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            margin-top: -8px;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            background-position: center;
+            background-repeat: no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
+            background-image: url(../../../svg/faq-arrow.svg);
+            @include transition(all, .35s);
+          }
+        }
+
+        .answer{
+          display: none;
+          max-width: 740px;
+
+          .typo{
+            font-size: 18px;
+            line-height: 210%;
+            color: #18171C;
+            margin-bottom: 28px;
+
+            @media (max-width: 1024px){
+              font-size: 16px;
+              margin-bottom: 18px;
+              line-height: 1.6;
+            }
+          }
+
+          .overallButton{
+            margin-bottom: 34px;
+          }
+        }
+
+        &.opened{
+          .question{
+            &:before{
+              @include transform(rotate(180deg));
+            }
+          }
+        }
+      }
+    }
+  }
+}

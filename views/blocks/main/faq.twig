@@ -1,0 +1,41 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        <div class="banner"{% if fields.top_background.url %} style="background-image: url({{ fields.top_background.url }});"{% endif %}>
+            {% if fields.title %}
+            <p class="title">{{ fields.title }}</p>
+            {% endif %}
+            <span class="gradient"></span>
+        </div>
+        {% if fields.faq is iterable %}
+        <div class="faq">
+            {% for key,val in fields.faq %}
+            <div class="line">
+                {% if val.question %}
+                <p class="question">{{ val.question }}</p>
+                {% endif %}
+                <div class="answer">
+                    {% if val.answer %}
+                    <div class="typo">
+                        {{ val.answer }}
+                    </div>
+                    {% endif %}
+                    {% if val.button.url and val.button.title %}
+                    <p class="overallButton shadow smaller">
+                        <a href="{{ val.button.url }}" target="{{ val.button.target }}">
+                            {{ val.button.title }}
+                        </a>
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

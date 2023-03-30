@@ -1,0 +1,36 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <p class="title">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.description %}
+        <div class="description typo">
+            {{ fields.description }}
+        </div>
+        {% endif %}
+        {% if fields.awards is iterable %}
+        <div class="awards">
+            {% for key,val in fields.awards %}
+            <div class="award">
+                {% if val.photos is iterable %}
+                <div class="photo">
+                    {% for p_key,p_val in val.photos %}
+                    <a href="{{ p_val.url }}" data-fancybox="g-{{ key }}"><img src="{{ p_val.url }}" alt="{{ p_val.alt }}"></a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="description typo">
+                    {{ val.description }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

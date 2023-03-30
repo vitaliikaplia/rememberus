@@ -1,0 +1,32 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <p class="title">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.description %}
+        <div class="description typo">
+            {{ fields.description }}
+        </div>
+        {% endif %}
+        {% if fields.gallery is iterable %}
+        <div class="gallery">
+        {% for key,val in fields.gallery %}
+            {% if val.file.url %}
+                {% set url = val.file.url %}
+            {% else %}
+                {% set url = val.photo.url %}
+            {% endif %}
+            <a href="{{ url }}"{% if not val.file.url %} data-fancybox{% else %} target="_blank"{% endif %}>
+                <img src="{{ val.photo.url }}" alt="{{ val.photo.alt }}">
+            </a>
+        {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

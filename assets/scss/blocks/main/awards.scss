@@ -1,0 +1,120 @@
+/* awards
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-awards{
+  padding: 80px 20px 20px;
+
+  @media (max-width: 1024px){
+    padding: 60px 20px 20px;
+  }
+
+  .customBlock{
+    margin: 0 auto;
+    max-width: 1400px;
+
+    & > .title{
+      font-weight: 700;
+      font-size: 60px;
+      line-height: .9;
+      text-align: center;
+      color: #18171C;
+      margin-bottom: 18px;
+
+      @media (max-width: 1024px){
+        font-size: 40px;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+    }
+
+    & > .description{
+      font-size: 16px;
+      line-height: 1.8;
+      text-align: center;
+      max-width: 608px;
+      margin: 0 auto 48px;
+
+      @media (max-width: 1024px){
+        font-size: 15px;
+        line-height: 1.6;
+      }
+    }
+
+    .awards{
+      display: flex;
+      flex-wrap: wrap;
+
+      @media (max-width: 1024px){
+        flex-direction: column;
+      }
+
+      .award{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 32px;
+
+        @media (max-width: 1024px){
+          width: 100%;
+        }
+
+        @media (max-width: 640px){
+          flex-direction: column;
+        }
+
+        .photo{
+          font-size: 0;
+          width: 50%;
+
+          @media (max-width: 640px){
+            width: 100%;
+          }
+
+          a{
+            display: none;
+
+            &:nth-child(1){
+              display: block;
+            }
+          }
+          
+          img{
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+
+          }
+        }
+
+        .description{
+          width: 50%;
+          padding-left: 20px;
+
+          @media (max-width: 640px){
+            width: 100%;
+            padding-left: 0;
+            padding-top: 20px;
+          }
+        }
+
+        &:nth-child(2n-1){
+          padding-right: 20px;
+
+          @media (max-width: 1024px){
+            padding-right: 0;
+          }
+        }
+        &:nth-child(2n){
+          padding-left: 20px;
+
+          @media (max-width: 1024px){
+            padding-left: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<div class="overallHeaderWrapper">
+    <div class="overallHeader">
+        <div class="left">
+            {% if general_fields.header.menu.html %}
+            <ul class="menu">
+                {{ general_fields.header.menu.html }}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="center">
+            <p class="logo">
+                <a href="{{ site.url }}">
+                    <img src="{{ site.theme.uri }}/assets/svg/header-logo.svg" alt="{{ site.name }}">
+                </a>
+            </p>
+        </div>
+        <div class="right">
+            {% if general_fields.header.button.url and general_fields.header.button.title %}
+            <ul class="menu">
+                <li>
+                    <a href="{{ general_fields.header.button.url }}" target="{{ general_fields.header.button.target }}">
+                        {{ general_fields.header.button.title }}
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+            {% if general_fields.header.socials is iterable %}
+            <ul class="socials">
+            {% for key,val in general_fields.header.socials %}
+                {% if val.type == "em" %}
+                    {% set link = 'mailto:'~val.email %}
+                {% else %}
+                    {% set link = val.url %}
+                {% endif %}
+                {% if link %}
+                <li>
+                    <a href="{{ link }}" target="_blank">
+                        <img src="{{ site.theme.uri }}/assets/img/h-soc-{{ val.type }}.png">
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% if general_fields.header.translation_flags %}
+        {{ fn('do_shortcode','[google-translator]') }}
+        {% endif %}
+        <button class="mobileMenuButton"><span></span></button>
+    </div>
+</div>

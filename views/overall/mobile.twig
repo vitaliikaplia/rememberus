@@ -1,0 +1,28 @@
+<div class="mobileMenuWrapper">
+
+    {% if general_fields.mobile.menu.html %}
+    <ul class="menu">
+        {{ general_fields.mobile.menu.html }}
+    </ul>
+    {% endif %}
+
+    {% if general_fields.mobile.socials is iterable %}
+    <ul class="socials">
+        {% for key,val in general_fields.mobile.socials %}
+        {% if val.type == "em" %}
+            {% set link = 'mailto:'~val.email %}
+        {% else %}
+            {% set link = val.url %}
+        {% endif %}
+        {% if link %}
+            <li>
+                <a href="{{ link }}" target="_blank">
+                    <img src="{{ site.theme.uri }}/assets/img/h-soc-{{ val.type }}.png">
+                </a>
+            </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+</div>

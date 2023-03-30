@@ -1,0 +1,119 @@
+/* slider
+-------------------------------------------------------------- */
+
+@import "../../mixins";
+
+.main-slider{
+  .customBlock{
+
+    .slick-dots{
+      position: absolute;
+      z-index: 120;
+      @include transform(translateZ(120px));
+      margin-bottom: 20px;
+      left: 0;
+
+      button{
+        &:before{
+          font-size: 14px;
+          color: #fff;
+          @include opacity(.5);
+        }
+      }
+
+      .slick-active{
+        button{
+          &:before{
+            @include opacity(1);
+          }
+        }
+      }
+    }
+
+    .slick-arrow{
+      position: absolute;
+      z-index: 120;
+      @include transform(translateZ(120px));
+      top: 30%;
+      height: 34px;
+      width: 34px;
+
+      &:before{
+        font-size: 34px;
+      }
+
+      &.slick-prev{
+        margin-left: -590px;
+        left: 50%;
+
+        @media (max-width: 1200px){
+          margin-left: auto;
+          left: 20px;
+        }
+      }
+      &.slick-next{
+        margin-right: -590px;
+        right: 50%;
+
+        @media (max-width: 1200px){
+          margin-right: auto;
+          right: 20px;
+        }
+      }
+    }
+
+    .slider{
+      .slide{
+        background-position: center;
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        background-size: cover;
+
+        .wp-admin &,
+        .wp-embed-responsive &{
+          display: none;
+          &:first-child{
+            display: block;
+          }
+        }
+
+        .bottomWrapper{
+          height: 100vh;
+          min-height: 480px;
+          max-height: 760px;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+
+          .bottom{
+            width: 100%;
+            background-color: rgba(#fff,.8);
+            padding: 32px 20px 28px;
+
+            .inner{
+              max-width: 1180px;
+              margin: 0 auto;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+
+              .suffix{
+                text-align: center;
+                font-size: 17px;
+
+                @media (max-width: 1024px){
+                  font-size: 15px;
+                }
+              }
+
+              .overallButton{
+                margin-bottom: 24px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

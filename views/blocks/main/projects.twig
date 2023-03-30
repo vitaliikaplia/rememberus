@@ -1,0 +1,42 @@
+{% extends "block-base.twig" %}
+
+{% block content %}
+
+<div class="customBlockWrapper {{ block_class }}" id="{{ block.id }}">
+    <div class="customBlock">
+        {% if fields.title %}
+        <p class="title">{{ fields.title }}</p>
+        {% endif %}
+        {% if fields.description %}
+        <div class="description typo">
+            {{ fields.description }}
+        </div>
+        {% endif %}
+        {% if fields.projects is iterable %}
+        {% set projects = fn('get_projects', fields.projects) %}
+        <div class="projects grid-{{ fields.grid_type }}">
+            {% if projects is iterable %}
+            {% for key,project in projects %}
+            <div class="project{% if project.meta('top_banner').gradient %} gradient{% endif %}">
+                <a href="{{ project.link }}">
+                    {% if project.title %}
+                    <p class="title">{{ project.title }}</p>
+                    {% endif %}
+                    {% if project.meta('top_banner').start_date %}
+                    <p class="start">started: {{ project.meta('top_banner').start_date }}</p>
+                    {% endif %}
+                    {% if project.meta('top_banner').end_date %}
+                    <p class="end">finished: {{ project.meta('top_banner').end_date }}</p>
+                    {% endif %}
+                    <span class="bg static" style="background-image: url({{ project.meta('thumbnail').static.url }});"></span>
+                    <span class="bg hover" style="background-image: url({{ project.meta('thumbnail').hover.url }});"></span>
+                </a>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

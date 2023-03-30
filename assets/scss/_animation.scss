@@ -1,0 +1,35 @@
+/* Animations
+-------------------------------------------------------------- */
+
+@include keyframe(shake){
+	0% {
+		@include transform(translateX(0px));
+	}
+	20% {
+		@include transform(translateX(-6px));
+		@media (max-width: 540px) {
+			@include transform(translateX(-2px));
+		}
+	}
+	40% {
+		@include transform(translateX(6px));
+		@media (max-width: 540px) {
+			@include transform(translateX(2px));
+		}
+	}
+	60% {
+		@include transform(translateX(-6px));
+		@media (max-width: 540px) {
+			@include transform(translateX(-2px));
+		}
+	}
+	80% {
+		@include transform(translateX(6px));
+		@media (max-width: 540px) {
+			@include transform(translateX(2px));
+		}
+	}
+	100% {
+		@include transform(translateX(0px));
+	}
+}
