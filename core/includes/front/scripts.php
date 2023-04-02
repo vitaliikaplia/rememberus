@@ -7,7 +7,7 @@ function load_personal_resources() {
 	if( !is_admin()){
 		wp_deregister_script('jquery');
 	}
-    if(!get_option('inline_scripts_and_styles') && HIDDEN_AUTHORIZATION_SECRET_URL != str_replace('/','',stripslashes($_SERVER['REQUEST_URI']))){
+    if(!get_option('inline_scripts_and_styles') || HIDDEN_AUTHORIZATION_SECRET_URL != str_replace('/','',stripslashes($_SERVER['REQUEST_URI']))){
         wp_register_script('jquery', TEMPLATE_DIRECTORY_URL . 'assets/js/jquery.min.js', '', '3.4.1', true);
         wp_enqueue_script('jquery');
         wp_register_script('plugins_js', TEMPLATE_DIRECTORY_URL.'assets/js/plugins.min.js', '', ASSETS_VERSION, true);
