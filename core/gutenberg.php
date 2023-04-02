@@ -238,14 +238,6 @@ if(!get_option('disable_gutenberg_everywhere')){
     /** remove default block patterns from gutenberg editor */
     remove_theme_support( 'core-block-patterns' );
 
-    /** remove custom gutenberg css */
-//    add_filter( 'block_editor_settings_all' , 'remove_guten_wrapper_styles' );
-//    function remove_guten_wrapper_styles( $settings ) {
-//        unset($settings['styles'][0]);
-//        unset($settings['styles'][1]);
-//        return $settings;
-//    }
-
     /**
      * Enqueue WordPress theme styles within Gutenberg.
      */
@@ -253,31 +245,5 @@ if(!get_option('disable_gutenberg_everywhere')){
         wp_enqueue_style( 'organic-origin-gutenberg', TEMPLATE_DIRECTORY_URL . 'assets/css/gutenberg.min.css', false, ASSETS_VERSION, 'all' );
     }
     add_action( 'enqueue_block_editor_assets', 'organic_origin_gutenberg_styles' );
-
-    /**
-     * Adding block styles as cached inlined css
-     */
-    function add_blocks_styles() {
-        if(!is_404()){
-            if(get_option('inline_scripts_and_styles')){
-                if($blocks_css = get_transient( 'blocks_css' )){
-                    echo $blocks_css;
-                } else {
-                    global $blocks;
-                    if(!empty($blocks)){
-                        $css = '';
-                        foreach($blocks as $block){
-                            $css .= file_get_contents( TEMPLATE_DIRECTORY_URL.'assets/css/blocks/' . $block['category'] . '/' . $block['name'] . '.min.css' );
-                        }
-                        $blocks_css = '<style type="text/css">'.$css.'</style>';
-                        set_transient( 'blocks_css', $blocks_css, TRANSIENTS_TIME );
-                        echo "\n";
-                        echo $blocks_css;
-                    }
-                }
-            }
-        }
-    }
-    add_action( 'wp_head', 'add_blocks_styles' );
 
 }

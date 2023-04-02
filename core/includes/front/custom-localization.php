@@ -29,7 +29,6 @@ function custom_localization(){
         'Delete child media' => __('Delete child media', TEXTDOMAIN),
         'Enable HTML cache' => __('Enable HTML cache', TEXTDOMAIN),
         'Enable minify' => __('Enable minify', TEXTDOMAIN),
-        'Inline scripts and styles' => __('Inline scripts and styles', TEXTDOMAIN),
         'Google maps API key' => __('Google maps API key', TEXTDOMAIN),
         'Resize at upload' => __('Resize at upload', TEXTDOMAIN),
         'Enable' => __('Enable', TEXTDOMAIN),
