@@ -22,6 +22,7 @@ define( 'SVG_SPRITE_URL', TEMPLATE_DIRECTORY_URL . 'assets/svg/sprite.svg?ver=' 
 $parsed_url = parse_url(BLOGINFO_URL );
 define( 'BLOGINFO_JUST_DOMAIN', $parsed_url['host'] );
 define( 'TRANSIENTS_TIME', 48 * HOUR_IN_SECONDS );
+define('HIDDEN_AUTHORIZATION_SECRET_URL', 'hidden-authorization-83467386739286723986');
 
 /** multilingual constants + wpml */
 if( defined('ICL_LANGUAGE_CODE' ) ){
@@ -254,3 +255,6 @@ if (!function_exists('get_fields')) {
     }
     add_action( 'admin_notices', 'sample_admin_notice__success' );
 }
+
+/** hidden authorization */
+require_once CORE_PATH . DIRECTORY_SEPARATOR . 'hidden-authorization.php';

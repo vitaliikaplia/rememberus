@@ -46,6 +46,11 @@ function custom_localization(){
         'Username' => __('Username', TEXTDOMAIN),
         'Password' => __('Password', TEXTDOMAIN),
         'From name' => __('From name', TEXTDOMAIN),
-        'Secure' => __('Secure', TEXTDOMAIN)
+        'Secure' => __('Secure', TEXTDOMAIN),
+        'Authorization' => __('Authorization', TEXTDOMAIN),
+        'Your Email' => __('Your Email', TEXTDOMAIN),
+        'Your password' => __('Your password', TEXTDOMAIN),
+        'Login' => __('Login', TEXTDOMAIN),
+        'Enter your secret code from Email' => __('Enter your secret code from Email', TEXTDOMAIN)
     );
 }

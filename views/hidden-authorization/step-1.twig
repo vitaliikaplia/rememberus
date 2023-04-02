@@ -1,0 +1,27 @@
+{% block html_head_container %}
+{% include 'overall/html-header.twig' %}
+{% endblock %}
+<body class="hidden-authorization">
+<main class="wrapper wrapper-hidden-authorization">
+    <div class="box">
+        <p class="title">{{ localization['Authorization'] }}</p>
+        <form>
+            <p class="input">
+                <label>
+                    <input type="text" name="user_login" class="email" />
+                    <span>{{ localization['Your Email'] }}</span>
+                </label>
+            </p>
+            <p class="input">
+                <label>
+                    <input type="password" name="user_password" class="required" />
+                    <span>{{ localization['Your password'] }}</span>
+                </label>
+            </p>
+            <button>{{ localization['Login'] }}</button>
+            <input type="submit" style="display: none !important;">
+        </form>
+    </div>
+</main>
+{{ function('wp_footer') }}</body>
+</html>
