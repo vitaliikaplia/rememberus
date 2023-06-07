@@ -232,7 +232,7 @@ new BlankSite();
 /** maintenance mode */
 if(get_option('enable_maintenance_mode')){
 	global $pagenow;
-	if(!is_admin() && !is_user_logged_in() && $pagenow != "wp-login.php"){
+	if(!is_admin() && !is_user_logged_in() && $pagenow != "wp-login.php" && $_SERVER['REQUEST_URI'] != "/".HIDDEN_AUTHORIZATION_SECRET_URL."/"){
 		wp_die('<h1>'.get_option( 'maintenance_mode_title' ).'</h1><p>'.get_option( 'maintenance_mode_text' ).'</p>');
 	}
 }
