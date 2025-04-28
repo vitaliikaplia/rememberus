@@ -33,7 +33,7 @@ function mail_log_export_page() {
 
 }
 
-if(is_admin() && $_GET['post_type'] == "mail-log" && $_GET['page'] == "mail_logs_export" && $_GET['export_process'] == "ok" && $_POST['export_date_from'] && $_POST['export_date_to']){
+if(is_admin() && isset($_GET['post_type']) && $_GET['post_type'] == "mail-log" && isset($_GET['page']) && $_GET['page'] == "mail_logs_export" && isset($_GET['export_process']) && $_GET['export_process'] == "ok" && isset($_POST['export_date_from']) && $_POST['export_date_from'] && isset($_POST['export_date_to']) && $_POST['export_date_to']){
 
     $dateFrom = date_parse($_POST['export_date_from']);
     $dateTo = date_parse($_POST['export_date_to']);
