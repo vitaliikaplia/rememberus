@@ -44,14 +44,14 @@ function custom_form_submit_action() {
 
         if(is_array($form_options['email_recipients'])){
             foreach($form_options['email_recipients'] as $emailToSend){
-                write_log('emailToSend:');
-                write_log($emailToSend['email']);
-                write_log('subject_coded:');
-                write_log($subject_coded);
-                write_log('mail:');
-                write_log($mail);
-                write_log('headers:');
-                write_log($headers);
+//                write_log('emailToSend:');
+//                write_log($emailToSend['email']);
+//                write_log('subject_coded:');
+//                write_log($subject_coded);
+//                write_log('mail:');
+//                write_log($mail);
+//                write_log('headers:');
+//                write_log($headers);
                 wp_mail($emailToSend['email'], $subject_coded, $mail, $headers);
             }
         }
