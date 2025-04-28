@@ -12,11 +12,9 @@ function custom_form_submit_action() {
 
         foreach($form_options_arr as $value){
             foreach ($value as $key => $value){
-                $form_options[$key] = str_replace(PHP_EOL,"<br />",$value);
+                $form_options[$key] = $value;
             }
         }
-
-        write_log($form_options);
 
         foreach($_POST as $key => $value){
             if($key != 'action' && $key != 'secret'){
