@@ -10,6 +10,8 @@ function custom_form_submit_action() {
         $form_fields = array();
         $form_text = "<p>";
 
+        write_log($form_options_arr);
+
         foreach($form_options_arr as $value){
             foreach ($value as $key => $value){
                 $form_options[$key] = str_replace(PHP_EOL,"<br />",$value);
